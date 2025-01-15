@@ -51,10 +51,9 @@
             display: none;
         }
 
-        /* Mot de passe caché dans le CSS */
         #password-hint::after {
-            content: "niveau2"; /* Mot de passe */
-            display: none; /* Caché */
+            content: "niveau2"; 
+            display: none; 
         }
     </style>
 </head>
@@ -68,23 +67,22 @@
         <p id="password-error" style="color: red; display: none;">Mot de passe incorrect !</p>
     </div>
 
-    <!-- Élément pour stocker le mot de passe dans le CSS -->
     <div id="password-hint"></div>
 
     <script>
         // JavaScript
         function checkPassword() {
-            // Récupérer le mot de passe caché dans le CSS
             const passwordHint = window.getComputedStyle(
                 document.getElementById("password-hint"), "::after"
-            ).content.replace(/['"]/g, ''); // Supprimer les guillemets
+            ).content.replace(/['"]/g, ''); 
 
             const passwordInput = document.getElementById("password-input").value;
             const passwordError = document.getElementById("password-error");
 
-            if (passwordInput === passwordHint) {
-                // Rediriger vers level2.html
-                window.location.href = "level2.html";
+           if (passwordInput === correctPassword) {
+                const encodedLink = "bGV2ZWwyLmh0bWw="; 
+                const decodedLink = atob(encodedLink);
+                window.location.href = decodedLink;
             } else {
                 // Afficher une erreur
                 passwordError.style.display = "block";
