@@ -70,7 +70,7 @@
 
     <!-- Formulaire pour entrer le mot de passe -->
     <div class="password-form">
-        <p>Pour accéder au niveau suivant, vous devez entrer <strong>le mot de passe</strong>.</p>
+        <p>Pour accéder au niveau suivant, vous devez entrer <span>le mot de passe</span>.</p>
         <input type="password" id="password-input" placeholder="Mot de passe">
         <button onclick="checkPassword()">Valider</button>
         <p id="password-error">Mot de passe incorrect !</p>
@@ -82,7 +82,7 @@
         // JavaScript
         function checkPassword() {
             // Dériver le mot de passe du contenu de la page
-            const hintParagraph = document.querySelector("p strong").textContent; // "le mot de passe"
+            const hintParagraph = document.querySelector("p span").textContent; // "le mot de passe"
             const correctPassword = hintParagraph.toLowerCase(); // Convertir en minuscules
 
             const passwordInput = document.getElementById("password-input").value.toLowerCase(); // Ignorer la casse
