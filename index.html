@@ -79,7 +79,7 @@
             const passwordInput = document.getElementById("password-input").value;
             const passwordError = document.getElementById("password-error");
 
-           if (passwordInput === correctPassword) {
+           if (passwordInput === passwordHint) {
                 const encodedLink = "bGV2ZWwyLmh0bWw="; 
                 const decodedLink = atob(encodedLink);
                 window.location.href = decodedLink;
