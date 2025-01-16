@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trouvez le mot de passe</title>
     <style>
-         body {
+        body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
@@ -69,10 +69,10 @@
             text-decoration: underline;
         }
         .v2w3x4 {
-            display: block; /* Visible par défaut */
+            display: block;
         }
         .y5z6a7, .e1f2g3 {
-            display: none; /* Masqué par défaut */
+            display: none;
         }
         .y5z6a7 {
             flex-direction: column;
@@ -134,19 +134,16 @@
     </div>
 
     <div class="y5z6a7" id="l4m5n6">
-        <img id="gif1" alt="GIF amusant">
         <button class="b8c9d0" onclick="resetPage()">Try Again</button>
     </div>
 
     <div class="y5z6a7" id="o7p8q9">
-        <img id="gif2" alt="Deuxième GIF amusant">
         <button class="b8c9d0" onclick="resetPage()">Try Again</button>
     </div>
 
     <div class="e1f2g3" id="r0s1t2">
         <h2>Félicitations ! 🎉</h2>
         <p>Soutenez le créateur (obligatoire): FR76 1005 7192 3100 0986 1920 604</p>
-        <img id="gif3">
     </div>
 
     <footer>
@@ -160,22 +157,13 @@
             const _0x3c4d = atob("YnJhdm9iZw==");
             const _0x5e6f = atob("bml2ZWF1c3VpdmFudHN0cA==");
 
-            // Fonction pour charger les GIF depuis une autre page
-            function loadGifs() {
-                fetch('hidden-gifs.html') // Remplacez par l'URL de votre autre page
-                    .then(response => response.text())
-                    .then(data => {
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(data, 'text/html');
-                        const gif1 = doc.getElementById('hidden-gif1').src;
-                        const gif2 = doc.getElementById('hidden-gif2').src;
-                        const gif3 = doc.getElementById('hidden-gif3').src;
-
-                        document.getElementById('gif1').src = gif1;
-                        document.getElementById('gif2').src = gif2;
-                        document.getElementById('gif3').src = gif3;
-                    })
-                    .catch(error => console.error('Erreur lors du chargement des GIF:', error));
+            // Fonction pour charger un GIF dynamiquement
+            function loadGif(containerId, gifSrc) {
+                const container = document.getElementById(containerId);
+                const img = document.createElement("img");
+                img.src = gifSrc;
+                img.alt = "GIF";
+                container.prepend(img); // Ajoute le GIF au début du conteneur
             }
 
             window.ozheguehzon = function() {
@@ -191,6 +179,7 @@
                     _0xd4f3.style.display = "none";
                     _0xf615.style.display = "none";
                     _0x1a3b.style.display = "flex";
+                    loadGif("r0s1t2", "whoever-moves.gif"); // Charger le GIF de félicitations
                     confetti({
                         particleCount: 100,
                         spread: 70,
@@ -201,11 +190,13 @@
                     _0xd4f3.style.display = "flex";
                     _0xf615.style.display = "none";
                     _0x1a3b.style.display = "none";
+                    loadGif("l4m5n6", "nonono.gif"); // Charger le premier GIF
                 } else if (_0x7a8b === _0x5e6f) {
                     _0xb2e1.style.display = "none";
                     _0xd4f3.style.display = "none";
                     _0xf615.style.display = "flex";
                     _0x1a3b.style.display = "none";
+                    loadGif("o7p8q9", "herewego.gif"); // Charger le deuxième GIF
                 } else {
                     _0x9c0d.style.display = "block";
                 }
@@ -224,10 +215,14 @@
                 _0xd4f3.style.display = "none";
                 _0x1a3b.style.display = "none";
                 document.getElementById("i1j2k3").value = "";
-            };
 
-            // Charger les GIF au chargement de la page
-            loadGifs();
+                // Supprimer les GIFs chargés
+                const gifContainers = [_0x9c0d, _0xb2e1, _0x1a3b];
+                gifContainers.forEach(container => {
+                    const img = container.querySelector("img");
+                    if (img) img.remove();
+                });
+            };
         })();
     </script>
 </body>
