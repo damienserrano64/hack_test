@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niveau 2 - Trouvez le fichier caché</title>
+    <style>
+        /* CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .password-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .password-form input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .password-form button {
+            padding: 8px 12px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .password-form button:hover {
+            background-color: #555;
+        }
+
+        #password-error {
+            color: red;
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* Style pour l'indice */
+        .hint {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Titre -->
+    <h1>Niveau 2 - Trouvez le fichier caché</h1>
+
+    <!-- Formulaire pour entrer le mot de passe -->
+    <div class="password-form">
+        <p>Entrez le mot de passe pour accéder au niveau suivant :</p>
+        <input type="password" id="password-input" placeholder="Mot de passe">
+        <button onclick="checkPassword()">Valider</button>
+        <p id="password-error">Mot de passe incorrect !</p>
+    </div>
+
+    <!-- Indice discret -->
+    <div class="hint">
+        <p>Astuce : Le mot de passe est caché dans un fichier sur ce site. Cherchez bien !</p>
+    </div>
+
+    <script>
+        // JavaScript
+        function checkPassword() {
+            // Mot de passe correct (à trouver dans le fichier caché)
+            const correctPassword = "fichier123";
+
+            const passwordInput = document.getElementById("password-input").value;
+            const passwordError = document.getElementById("password-error");
+
+            if (passwordInput === correctPassword) {
+                // Rediriger vers le niveau suivant
+                window.location.href = "level3.html";
+            } else {
+                // Afficher une erreur
+                passwordError.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
