@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niveau 2 - Trouvez le fichier caché</title>
+    <title>Niveau Final - Trouvez le vrai mot de passe</title>
     <style>
         /* CSS */
         body {
@@ -16,6 +16,7 @@
             height: 100vh;
             flex-direction: column;
             text-align: center;
+            margin: 0;
         }
 
         h1 {
@@ -64,41 +65,123 @@
             color: #666;
             margin-top: 20px;
         }
+
+        /* Style pour le lien de téléchargement */
+        .download-link {
+            margin-top: 20px;
+        }
+
+        .download-link a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .download-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style pour le contenu caché */
+        .hidden-content {
+            display: none;
+        }
+
+        /* Style pour le GIF et le bouton "Try Again" */
+        .gif-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .try-again-button {
+            margin-top: 20px;
+            padding: 8px 12px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .try-again-button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
-    <!-- Titre -->
-    <h1>Niveau 2 - Trouvez le fichier caché</h1>
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <!-- Titre -->
+        <h1>Niveau Final - Trouvez le vrai mot de passe</h1>
 
-    <!-- Formulaire pour entrer le mot de passe -->
-    <div class="password-form">
-        <p>Entrez le mot de passe pour accéder au niveau suivant :</p>
-        <input type="password" id="password-input" placeholder="Mot de passe">
-        <button onclick="checkPassword()">Valider</button>
-        <p id="password-error">Mot de passe incorrect !</p>
+        <!-- Formulaire pour entrer le mot de passe -->
+        <div class="password-form">
+            <p>Entrez le mot de passe pour terminer le jeu :</p>
+            <input type="password" id="password-input" placeholder="Mot de passe">
+            <button onclick="checkPassword()">Valider</button>
+            <p id="password-error">Mot de passe incorrect !</p>
+        </div>
+
+        <!-- Lien pour télécharger le fichier .docx -->
+        <div class="download-link">
+            <p>Téléchargez ce fichier pour trouver le mot de passe :</p>
+            <a href="hidden/mot-de-passe.docx" download>Télécharger le fichier</a>
+        </div>
+
+        <!-- Indice discret -->
+        <div class="hint">
+            <p>Astuce : Le mot de passe est caché dans le fichier. Cherchez bien !</p>
+        </div>
     </div>
 
-    <!-- Indice discret -->
-    <div class="hint">
-        <p>Astuce : Le mot de passe est caché dans un fichier sur ce site. Cherchez bien !</p>
+    <!-- Contenu caché (GIF et bouton "Try Again") -->
+    <div class="gif-container">
+        <img src="nonono.gif" alt="GIF amusant">
+        <button class="try-again-button" onclick="resetPage()">Try Again</button>
     </div>
 
     <script>
         // JavaScript
         function checkPassword() {
-            // Mot de passe correct (à trouver dans le fichier caché)
-            const correctPassword = "fichier123";
+            // Mot de passe correct (caché dans le fichier .docx)
+            const correctPassword = "invisible123";
+            // Faux mot de passe
+            const fakePassword = "bravobg";
 
             const passwordInput = document.getElementById("password-input").value;
             const passwordError = document.getElementById("password-error");
+            const mainContent = document.querySelector(".main-content");
+            const gifContainer = document.querySelector(".gif-container");
 
             if (passwordInput === correctPassword) {
-                // Rediriger vers le niveau suivant
-                window.location.href = "level3.html";
+                // Rediriger vers la page de félicitations
+                window.location.href = "congratulations.html";
+            } else if (passwordInput === fakePassword) {
+                // Afficher le GIF et cacher le contenu principal
+                mainContent.style.display = "none";
+                gifContainer.style.display = "flex";
             } else {
                 // Afficher une erreur
                 passwordError.style.display = "block";
             }
+        }
+
+        function resetPage() {
+            // Réinitialiser la page
+            const mainContent = document.querySelector(".main-content");
+            const gifContainer = document.querySelector(".gif-container");
+            const passwordError = document.getElementById("password-error");
+
+            mainContent.style.display = "block";
+            gifContainer.style.display = "none";
+            passwordError.style.display = "none";
+            document.getElementById("password-input").value = "";
         }
     </script>
 </body>
