@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niveau 2 - Trouvez le Mot de Passe</title>
-        <style>
+    <style>
         /* CSS */
         body {
             font-family: Arial, sans-serif;
@@ -76,10 +76,26 @@
         <p id="password-error">Mot de passe incorrect !</p>
     </div>
 
-    
-
     <script>
-        // JavaScript
+        // Fonction pour chiffrer une chaîne plusieurs fois
+        function encryptString(str, times) {
+            for (let i = 0; i < times; i++) {
+                str = btoa(str); // Encodage Base64
+            }
+            return str;
+        }
+
+        // Fonction pour déchiffrer une chaîne plusieurs fois
+        function decryptString(str, times) {
+            for (let i = 0; i < times; i++) {
+                str = atob(str); // Décodage Base64
+            }
+            return str;
+        }
+
+        // Lien chiffré (aiehfo.html chiffré 3 fois)
+        const encryptedLink = encryptString("aiehfo.html", 3);
+
         function checkPassword() {
             // Dériver le mot de passe du contenu de la page
             const hintParagraph = document.querySelector("p span").textContent; // "le mot de passe"
@@ -89,9 +105,11 @@
             const passwordError = document.getElementById("password-error");
 
             if (passwordInput === correctPassword) {
-                // Rediriger vers le niveau suivant (à définir)
-                alert("Bravo ! Vous avez trouvé le mot de passe.");
-                // window.location.href = "level3.html"; // Décommente pour rediriger
+                // Déchiffrer le lien
+                const decryptedLink = decryptString(encryptedLink, 3);
+
+                // Rediriger vers la page déchiffrée
+                window.location.href = decryptedLink;
             } else {
                 // Afficher une erreur
                 passwordError.style.display = "block";
