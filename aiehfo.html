@@ -69,13 +69,12 @@
             text-decoration: underline;
         }
         .v2w3x4 {
-            display: block; /* Rendre visible par défaut */
+            display: block; /* Visible par défaut */
         }
         .y5z6a7, .e1f2g3 {
-            display: none; /* Masquer ces éléments par défaut */
+            display: none; /* Masqué par défaut */
         }
         .y5z6a7 {
-            display: none;
             flex-direction: column;
             align-items: center;
         }
@@ -97,7 +96,6 @@
             background-color: #555;
         }
         .e1f2g3 {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -121,6 +119,7 @@
     </style>
 </head>
 <body>
+    <!-- Contenu principal -->
     <div class="v2w3x4">
         <h1 class="a1b2c3">Niveau Final - Trouvez le mot de passe</h1>
 
@@ -131,19 +130,24 @@
             <p id="m3n4o5">Mot de passe incorrect !</p>
         </div>
 
-        <a href="mot-de-passe.docx" download>Télécharger le fichier</a>
+        <div class="s9t0u1">
+            <a href="mot-de-passe.docx" download>Télécharger le fichier</a>
+        </div>
     </div>
 
+    <!-- Contenu caché (GIF 1 et bouton "Try Again") -->
     <div class="y5z6a7" id="l4m5n6">
         <img src="nonono.gif" alt="GIF amusant">
         <button class="b8c9d0" onclick="resetPage()">Try Again</button>
     </div>
 
+    <!-- Contenu caché (GIF 2 et bouton "Try Again") -->
     <div class="y5z6a7" id="o7p8q9">
         <img src="herewego.gif" alt="Deuxième GIF amusant">
         <button class="b8c9d0" onclick="resetPage()">Try Again</button>
     </div>
 
+    <!-- Célébration (confettis et message) -->
     <div class="e1f2g3" id="r0s1t2">
         <h2>Félicitations ! 🎉</h2>
         <p>Soutenez le créateur (obligatoire): FR76 1005 7192 3100 0986 1920 604</p>
@@ -155,10 +159,12 @@
 
     <script>
         (function() {
-            const _0x1a2b = atob("ZGFtaWVubGVnb2F0");
-            const _0x3c4d = atob("YnJhdm9iZw==");
-            const _0x5e6f = atob("bml2ZWF1c3VpdmFudHN0cA==");
+            // Encodage des mots de passe en Base64
+            const _0x1a2b = atob("ZGFtaWVubGVnb2F0"); // "damienlegoat"
+            const _0x3c4d = atob("YnJhdm9iZw=="); // "bravobg"
+            const _0x5e6f = atob("bml2ZWF1c3VpdmFudHN0cA=="); // "niveausuivantstp"
 
+            // Fonction pour vérifier le mot de passe
             window.ozheguehzon = function() {
                 const _0x7a8b = document.getElementById("i1j2k3").value;
                 const _0x9c0d = document.getElementById("m3n4o5");
@@ -168,7 +174,10 @@
                 const _0x1a3b = document.getElementById("r0s1t2");
 
                 if (_0x7a8b === _0x1a2b) {
+                    // Afficher la célébration et masquer le reste
                     _0xb2e1.style.display = "none";
+                    _0xd4f3.style.display = "none";
+                    _0xf615.style.display = "none";
                     _0x1a3b.style.display = "flex";
                     confetti({
                         particleCount: 100,
@@ -176,26 +185,36 @@
                         origin: { y: 0.6 }
                     });
                 } else if (_0x7a8b === _0x3c4d) {
+                    // Afficher le premier GIF et masquer le reste
                     _0xb2e1.style.display = "none";
                     _0xd4f3.style.display = "flex";
+                    _0xf615.style.display = "none";
+                    _0x1a3b.style.display = "none";
                 } else if (_0x7a8b === _0x5e6f) {
+                    // Afficher le deuxième GIF et masquer le reste
                     _0xb2e1.style.display = "none";
+                    _0xd4f3.style.display = "none";
                     _0xf615.style.display = "flex";
+                    _0x1a3b.style.display = "none";
                 } else {
+                    // Afficher une erreur
                     _0x9c0d.style.display = "block";
                 }
             };
 
+            // Fonction pour réinitialiser la page
             window.resetPage = function() {
                 const _0x7a8b = document.querySelector(".v2w3x4");
                 const _0x9c0d = document.getElementById("l4m5n6");
                 const _0xb2e1 = document.getElementById("o7p8q9");
                 const _0xd4f3 = document.getElementById("m3n4o5");
+                const _0x1a3b = document.getElementById("r0s1t2");
 
                 _0x7a8b.style.display = "block";
                 _0x9c0d.style.display = "none";
                 _0xb2e1.style.display = "none";
                 _0xd4f3.style.display = "none";
+                _0x1a3b.style.display = "none";
                 document.getElementById("i1j2k3").value = "";
             };
         })();
