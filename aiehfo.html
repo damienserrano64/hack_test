@@ -17,6 +17,7 @@
             flex-direction: column;
             text-align: center;
             margin: 0;
+            overflow: hidden; /* Pour éviter le défilement lors de l'affichage des confettis */
         }
 
         h1 {
@@ -112,6 +113,32 @@
         .try-again-button:hover {
             background-color: #555;
         }
+
+        /* Style pour la célébration */
+        .celebration {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .celebration h2 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .celebration p {
+            font-size: 1.5rem;
+            color: #666;
+        }
     </style>
 </head>
 <body>
@@ -142,21 +169,30 @@
 
     <!-- Contenu caché (GIF 1 et bouton "Try Again") -->
     <div class="gif-container" id="gif1-container">
-        <img src="nonono.gif" alt="GIF amusant">
+        <img src="hidden/nonono.gif" alt="GIF amusant">
         <button class="try-again-button" onclick="resetPage()">Try Again</button>
     </div>
 
     <!-- Contenu caché (GIF 2 et bouton "Try Again") -->
     <div class="gif-container" id="gif2-container">
-        <img src="herewego.gif" alt="Deuxième GIF amusant">
+        <img src="hidden/herewego.gif" alt="Deuxième GIF amusant">
         <button class="try-again-button" onclick="resetPage()">Try Again</button>
     </div>
+
+    <!-- Célébration (confettis et message) -->
+    <div class="celebration" id="celebration">
+        <h2>Félicitations ! 🎉</h2>
+        <p>Vous avez terminé le jeu !</p>
+    </div>
+
+    <!-- Script pour les confettis -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <script>
         // JavaScript
         function checkPassword() {
-            // Mot de passe correct (caché dans le fichier .docx)
-            const correctPassword = "invisible123";
+            // Mot de passe correct
+            const correctPassword = "damienlegoat";
             // Faux mots de passe
             const fakePassword1 = "bravobg";
             const fakePassword2 = "niveausuivantstp";
@@ -166,10 +202,17 @@
             const mainContent = document.querySelector(".main-content");
             const gif1Container = document.getElementById("gif1-container");
             const gif2Container = document.getElementById("gif2-container");
+            const celebration = document.getElementById("celebration");
 
             if (passwordInput === correctPassword) {
-                // Rediriger vers la page de félicitations
-                window.location.href = "congratulations.html";
+                // Afficher la célébration et lancer les confettis
+                mainContent.style.display = "none";
+                celebration.style.display = "flex";
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
             } else if (passwordInput === fakePassword1) {
                 // Afficher le premier GIF et cacher le contenu principal
                 mainContent.style.display = "none";
