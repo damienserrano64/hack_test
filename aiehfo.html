@@ -5,149 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trouvez le mot de passe</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-            text-align: center;
-            margin: 0;
-            overflow: hidden;
-        }
-        .a1b2c3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        .d4e5f6 {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .g7h8i9 {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            width: 100%;
-        }
-        .j0k1l2 {
-            padding: 8px 12px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-        .j0k1l2:hover {
-            background-color: #555;
-        }
-        #m3n4o5 {
-            color: red;
-            display: none;
-            margin-top: 10px;
-        }
-        .p6q7r8 {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 20px;
-        }
-        .s9t0u1 {
-            margin-top: 20px;
-        }
-        .s9t0u1 a {
-            color: #333;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .s9t0u1 a:hover {
-            text-decoration: underline;
-        }
-        .v2w3x4 {
-            display: block; /* Visible par défaut */
-        }
-        .y5z6a7, .e1f2g3 {
-            display: none; /* Masqué par défaut */
-        }
-        .y5z6a7 {
-            flex-direction: column;
-            align-items: center;
-        }
-        .y5z6a7 img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .b8c9d0 {
-            margin-top: 20px;
-            padding: 8px 12px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .b8c9d0:hover {
-            background-color: #555;
-        }
-        .e1f2g3 {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 1000;
-        }
-        .e1f2g3 h2 {
-            font-size: 3rem;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .e1f2g3 p {
-            font-size: 1.5rem;
-            color: #666;
-        }
-        footer {
-            display: none;
-        }
+        /* Votre CSS actuel */
     </style>
 </head>
 <body>
     <div class="v2w3x4">
         <h1 class="a1b2c3">Trouvez le mot de passe</h1>
-
         <div class="d4e5f6">
             <p>Entrez le mot de passe pour terminer le jeu :</p>
             <input type="password" id="i1j2k3" placeholder="Mot de passe">
             <button class="j0k1l2" onclick="ozheguehzon()">Valider</button>
             <p id="m3n4o5">Mot de passe incorrect !</p>
         </div>
-
     </div>
 
     <div class="y5z6a7" id="l4m5n6">
-        <img src="nonono.gif" alt="GIF amusant">
+        <img id="gif1" alt="GIF amusant">
         <button class="b8c9d0" onclick="resetPage()">Try Again</button>
     </div>
 
     <div class="y5z6a7" id="o7p8q9">
-        <img src="herewego.gif" alt="Deuxième GIF amusant">
+        <img id="gif2" alt="Deuxième GIF amusant">
         <button class="b8c9d0" onclick="resetPage()">Try Again</button>
     </div>
 
     <div class="e1f2g3" id="r0s1t2">
         <h2>Félicitations ! 🎉</h2>
         <p>Soutenez le créateur (obligatoire): FR76 1005 7192 3100 0986 1920 604</p>
-        <img src="whoever-moves.gif">
+        <img id="gif3">
     </div>
 
     <footer>
@@ -155,12 +40,29 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-
     <script>
         (function() {
             const _0x1a2b = atob("ZGFtaWVubGVnb2F0");
             const _0x3c4d = atob("YnJhdm9iZw==");
             const _0x5e6f = atob("bml2ZWF1c3VpdmFudHN0cA==");
+
+            // Fonction pour charger les GIF depuis une autre page
+            function loadGifs() {
+                fetch('hidden-gifs.html') // Remplacez par l'URL de votre autre page
+                    .then(response => response.text())
+                    .then(data => {
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(data, 'text/html');
+                        const gif1 = doc.getElementById('hidden-gif1').src;
+                        const gif2 = doc.getElementById('hidden-gif2').src;
+                        const gif3 = doc.getElementById('hidden-gif3').src;
+
+                        document.getElementById('gif1').src = gif1;
+                        document.getElementById('gif2').src = gif2;
+                        document.getElementById('gif3').src = gif3;
+                    })
+                    .catch(error => console.error('Erreur lors du chargement des GIF:', error));
+            }
 
             window.ozheguehzon = function() {
                 const _0x7a8b = document.getElementById("i1j2k3").value;
@@ -209,6 +111,9 @@
                 _0x1a3b.style.display = "none";
                 document.getElementById("i1j2k3").value = "";
             };
+
+            // Charger les GIF au chargement de la page
+            loadGifs();
         })();
     </script>
 </body>
