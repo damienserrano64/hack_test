@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niveau Final - Trouvez le vrai mot de passe</title>
+    <title>Niveau Final - Trouvez le mot de passe</title>
     <style>
-        /* CSS */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -17,30 +16,26 @@
             flex-direction: column;
             text-align: center;
             margin: 0;
-            overflow: hidden; /* Pour éviter le défilement lors de l'affichage des confettis */
+            overflow: hidden;
         }
-
-        h1 {
+        .a1b2c3 {
             font-size: 2rem;
             margin-bottom: 20px;
         }
-
-        .password-form {
+        .d4e5f6 {
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        .password-form input {
+        .g7h8i9 {
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 4px;
             margin-bottom: 10px;
             width: 100%;
         }
-
-        .password-form button {
+        .j0k1l2 {
             padding: 8px 12px;
             background-color: #333;
             color: #fff;
@@ -49,58 +44,44 @@
             cursor: pointer;
             width: 100%;
         }
-
-        .password-form button:hover {
+        .j0k1l2:hover {
             background-color: #555;
         }
-
-        #password-error {
+        #m3n4o5 {
             color: red;
             display: none;
             margin-top: 10px;
         }
-
-        /* Style pour l'indice */
-        .hint {
+        .p6q7r8 {
             font-size: 0.9rem;
             color: #666;
             margin-top: 20px;
         }
-
-        /* Style pour le lien de téléchargement */
-        .download-link {
+        .s9t0u1 {
             margin-top: 20px;
         }
-
-        .download-link a {
+        .s9t0u1 a {
             color: #333;
             text-decoration: none;
             font-weight: bold;
         }
-
-        .download-link a:hover {
+        .s9t0u1 a:hover {
             text-decoration: underline;
         }
-
-        /* Style pour le contenu caché */
-        .hidden-content {
+        .v2w3x4 {
             display: none;
         }
-
-        /* Style pour les GIFs et le bouton "Try Again" */
-        .gif-container {
+        .y5z6a7 {
             display: none;
             flex-direction: column;
             align-items: center;
         }
-
-        .gif-container img {
+        .y5z6a7 img {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
         }
-
-        .try-again-button {
+        .b8c9d0 {
             margin-top: 20px;
             padding: 8px 12px;
             background-color: #333;
@@ -109,13 +90,10 @@
             border-radius: 4px;
             cursor: pointer;
         }
-
-        .try-again-button:hover {
+        .b8c9d0:hover {
             background-color: #555;
         }
-
-        /* Style pour la célébration */
-        .celebration {
+        .e1f2g3 {
             display: none;
             position: fixed;
             top: 0;
@@ -128,119 +106,97 @@
             flex-direction: column;
             z-index: 1000;
         }
-
-        .celebration h2 {
+        .e1f2g3 h2 {
             font-size: 3rem;
             color: #333;
             margin-bottom: 20px;
         }
-
-        .celebration p {
+        .e1f2g3 p {
             font-size: 1.5rem;
             color: #666;
         }
     </style>
 </head>
 <body>
-    <!-- Contenu principal -->
-    <div class="main-content">
-        <!-- Titre -->
-        <h1>Niveau Final - Trouvez le vrai mot de passe</h1>
+    <div class="v2w3x4">
+        <h1 class="a1b2c3">Niveau Final - Trouvez le mot de passe</h1>
 
-        <!-- Formulaire pour entrer le mot de passe -->
-        <div class="password-form">
+        <div class="d4e5f6">
             <p>Entrez le mot de passe pour terminer le jeu :</p>
-            <input type="password" id="password-input" placeholder="Mot de passe">
-            <button onclick="checkPassword()">Valider</button>
-            <p id="password-error">Mot de passe incorrect !</p>
+            <input type="password" id="i1j2k3" placeholder="Mot de passe">
+            <button class="j0k1l2" onclick="ozheguehzon()">Valider</button>
+            <p id="m3n4o5">Mot de passe incorrect !</p>
         </div>
 
-        <!-- Lien pour télécharger le fichier .docx -->
-        <div class="download-link">
-            <p>Téléchargez ce fichier pour trouver le mot de passe :</p>
-            <a href="hidden/mot-de-passe.docx" download>Télécharger le fichier</a>
-        </div>
+            <a href="mot-de-passe.docx" download>Télécharger le fichier</a>
 
-        <!-- Indice discret -->
-        <div class="hint">
-            <p>Astuce : Le mot de passe est caché dans le fichier. Cherchez bien !</p>
-        </div>
+
+    <div class="y5z6a7" id="l4m5n6">
+        <img src="nonono.gif" alt="GIF amusant">
+        <button class="b8c9d0" onclick="resetPage()">Try Again</button>
     </div>
 
-    <!-- Contenu caché (GIF 1 et bouton "Try Again") -->
-    <div class="gif-container" id="gif1-container">
-        <img src="hidden/nonono.gif" alt="GIF amusant">
-        <button class="try-again-button" onclick="resetPage()">Try Again</button>
+    <div class="y5z6a7" id="o7p8q9">
+        <img src="herewego.gif" alt="Deuxième GIF amusant">
+        <button class="b8c9d0" onclick="resetPage()">Try Again</button>
     </div>
 
-    <!-- Contenu caché (GIF 2 et bouton "Try Again") -->
-    <div class="gif-container" id="gif2-container">
-        <img src="hidden/herewego.gif" alt="Deuxième GIF amusant">
-        <button class="try-again-button" onclick="resetPage()">Try Again</button>
-    </div>
-
-    <!-- Célébration (confettis et message) -->
-    <div class="celebration" id="celebration">
+    <div class="e1f2g3" id="r0s1t2">
         <h2>Félicitations ! 🎉</h2>
         <p>Vous avez terminé le jeu !</p>
-        <p>Soutenez le créateur: FR76 1005 7192 3100 0986 1920 604 </p>
+        <img src="whoever-moves.gif">
+        <p>Soutenez le créateur (obligatoire): FR76 1005 7192 3100 0986 1920 604</p>
     </div>
 
     <!-- Script pour les confettis -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <script>
-        // JavaScript
-        function checkPassword() {
-            // Mot de passe correct
-            const correctPassword = "damienlegoat";
-            // Faux mots de passe
-            const fakePassword1 = "bravobg";
-            const fakePassword2 = "niveausuivantstp";
+        (function() {
+            const _0x1a2b = atob("ZGFtaWVubGVnb2F0");
+            const _0x3c4d = atob("YnJhdm9iZw==");
+            const _0x5e6f = atob("bml2ZWF1c3VpdmFudHN0cA==");
 
-            const passwordInput = document.getElementById("password-input").value;
-            const passwordError = document.getElementById("password-error");
-            const mainContent = document.querySelector(".main-content");
-            const gif1Container = document.getElementById("gif1-container");
-            const gif2Container = document.getElementById("gif2-container");
-            const celebration = document.getElementById("celebration");
+            window.ozheguehzon = function() {
+                const _0x7a8b = document.getElementById("i1j2k3").value;
+                const _0x9c0d = document.getElementById("m3n4o5");
+                const _0xb2e1 = document.querySelector(".v2w3x4");
+                const _0xd4f3 = document.getElementById("l4m5n6");
+                const _0xf615 = document.getElementById("o7p8q9");
+                const _0x1a3b = document.getElementById("r0s1t2");
 
-            if (passwordInput === correctPassword) {
-                // Afficher la célébration et lancer les confettis
-                mainContent.style.display = "none";
-                celebration.style.display = "flex";
-                confetti({
-                    particleCount: 100,
-                    spread: 70,
-                    origin: { y: 0.6 }
-                });
-            } else if (passwordInput === fakePassword1) {
-                // Afficher le premier GIF et cacher le contenu principal
-                mainContent.style.display = "none";
-                gif1Container.style.display = "flex";
-            } else if (passwordInput === fakePassword2) {
-                // Afficher le deuxième GIF et cacher le contenu principal
-                mainContent.style.display = "none";
-                gif2Container.style.display = "flex";
-            } else {
-                // Afficher une erreur
-                passwordError.style.display = "block";
-            }
-        }
+                if (_0x7a8b === _0x1a2b) {
+                    _0xb2e1.style.display = "none";
+                    _0x1a3b.style.display = "flex";
+                    confetti({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                    });
+                } else if (_0x7a8b === _0x3c4d) {
+                    _0xb2e1.style.display = "none";
+                    _0xd4f3.style.display = "flex";
+                } else if (_0x7a8b === _0x5e6f) {
+                    _0xb2e1.style.display = "none";
+                    _0xf615.style.display = "flex";
+                } else {
+                    _0x9c0d.style.display = "block";
+                }
+            };
 
-        function resetPage() {
-            // Réinitialiser la page
-            const mainContent = document.querySelector(".main-content");
-            const gif1Container = document.getElementById("gif1-container");
-            const gif2Container = document.getElementById("gif2-container");
-            const passwordError = document.getElementById("password-error");
+            window.resetPage = function() {
+                const _0x7a8b = document.querySelector(".v2w3x4");
+                const _0x9c0d = document.getElementById("l4m5n6");
+                const _0xb2e1 = document.getElementById("o7p8q9");
+                const _0xd4f3 = document.getElementById("m3n4o5");
 
-            mainContent.style.display = "block";
-            gif1Container.style.display = "none";
-            gif2Container.style.display = "none";
-            passwordError.style.display = "none";
-            document.getElementById("password-input").value = "";
-        }
+                _0x7a8b.style.display = "block";
+                _0x9c0d.style.display = "none";
+                _0xb2e1.style.display = "none";
+                _0xd4f3.style.display = "none";
+                document.getElementById("i1j2k3").value = "";
+            };
+        })();
     </script>
 </body>
 </html>
