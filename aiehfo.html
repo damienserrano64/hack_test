@@ -86,7 +86,7 @@
             display: none;
         }
 
-        /* Style pour le GIF et le bouton "Try Again" */
+        /* Style pour les GIFs et le bouton "Try Again" */
         .gif-container {
             display: none;
             flex-direction: column;
@@ -140,9 +140,15 @@
         </div>
     </div>
 
-    <!-- Contenu caché (GIF et bouton "Try Again") -->
-    <div class="gif-container">
-        <img src="nonono.gif" alt="GIF amusant">
+    <!-- Contenu caché (GIF 1 et bouton "Try Again") -->
+    <div class="gif-container" id="gif1-container">
+        <img src="hidden/fake.gif" alt="GIF amusant">
+        <button class="try-again-button" onclick="resetPage()">Try Again</button>
+    </div>
+
+    <!-- Contenu caché (GIF 2 et bouton "Try Again") -->
+    <div class="gif-container" id="gif2-container">
+        <img src="hidden/fake2.gif" alt="Deuxième GIF amusant">
         <button class="try-again-button" onclick="resetPage()">Try Again</button>
     </div>
 
@@ -151,21 +157,27 @@
         function checkPassword() {
             // Mot de passe correct (caché dans le fichier .docx)
             const correctPassword = "invisible123";
-            // Faux mot de passe
-            const fakePassword = "bravobg";
+            // Faux mots de passe
+            const fakePassword1 = "bravobg";
+            const fakePassword2 = "niveausuivantstp";
 
             const passwordInput = document.getElementById("password-input").value;
             const passwordError = document.getElementById("password-error");
             const mainContent = document.querySelector(".main-content");
-            const gifContainer = document.querySelector(".gif-container");
+            const gif1Container = document.getElementById("gif1-container");
+            const gif2Container = document.getElementById("gif2-container");
 
             if (passwordInput === correctPassword) {
                 // Rediriger vers la page de félicitations
                 window.location.href = "congratulations.html";
-            } else if (passwordInput === fakePassword) {
-                // Afficher le GIF et cacher le contenu principal
+            } else if (passwordInput === fakePassword1) {
+                // Afficher le premier GIF et cacher le contenu principal
                 mainContent.style.display = "none";
-                gifContainer.style.display = "flex";
+                gif1Container.style.display = "flex";
+            } else if (passwordInput === fakePassword2) {
+                // Afficher le deuxième GIF et cacher le contenu principal
+                mainContent.style.display = "none";
+                gif2Container.style.display = "flex";
             } else {
                 // Afficher une erreur
                 passwordError.style.display = "block";
@@ -175,11 +187,13 @@
         function resetPage() {
             // Réinitialiser la page
             const mainContent = document.querySelector(".main-content");
-            const gifContainer = document.querySelector(".gif-container");
+            const gif1Container = document.getElementById("gif1-container");
+            const gif2Container = document.getElementById("gif2-container");
             const passwordError = document.getElementById("password-error");
 
             mainContent.style.display = "block";
-            gifContainer.style.display = "none";
+            gif1Container.style.display = "none";
+            gif2Container.style.display = "none";
             passwordError.style.display = "none";
             document.getElementById("password-input").value = "";
         }
